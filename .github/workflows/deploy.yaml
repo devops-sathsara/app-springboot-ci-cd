@@ -12,7 +12,10 @@ env:
   PROJECT_ID: citric-shine-378115 # GCP project ID
   GAR_LOCATION: us-central1       # GCP Artifact Registry region
   REPOSITORY: demo-app            # GCP Artifact Registry docker repository naame
-  IMAGE_NAME: demo-app                 # Docker image name
+  IMAGE_NAME: demo-app            # Docker image name
+  SONAR_ORG_ID: devops-sathsara
+  SONAR_PROJECT_ID: devops-sathsara_app-springboot-ci-cd
+  SONAR_HOST: https://sonarcloud.io
 
 jobs:
   Build:
@@ -29,8 +32,9 @@ jobs:
           java-version: '17'
           cache: 'maven'
 
+      # This step can be removed if Automatic Analysis (recommended) is enabled - https://docs.sonarcloud.io/advanced-setup/automatic-analysis/
       - name: Analyze with SonarCloud
-        run: mvn -B verify sonar:sonar -Dsonar.organization=devops-sathsara -Dsonar.projectKey=devops-sathsara_app-springboot-ci-cd -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
+        run: mvn -B verify sonar:sonar -Dsonar.organization=${{ env.SONAR_ORD_ID }} -Dsonar.projectKey=${{ env.SONAR_PROJECT_ID }} -Dsonar.host.url=${{ env.SONAR_HOST }} -Dsonar.login=$SONAR_TOKEN
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
