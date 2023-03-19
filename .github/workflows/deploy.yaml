@@ -30,14 +30,13 @@ jobs:
           cache: 'maven'
 
       - name: Authenticate gcloud
-        id: 'auth'
+        id: auth
         uses: google-github-actions/auth@v0
         with:
-          credentials_json: ${{ secrets.GCP_SA_KEY }}
-          token_format: 'access_token'
-
-      - name: Echo
-        run: echo ${{ steps.auth.outputs.access_token }}
+          token_format: access_token
+          workload_identity_provider: projects/234610246542/locations/global/workloadIdentityPools/my-pool/providers/my-provider
+          service_account: github-action-sa@citric-shine-378115.iam.gserviceaccount.com
+          access_token_lifetime: 300s
 
       - name: Login to Artifact Registry
         uses: docker/login-action@v1
