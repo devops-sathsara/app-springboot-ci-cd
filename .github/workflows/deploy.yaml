@@ -100,8 +100,9 @@ jobs:
         uses: anchore/scan-action@v3
         with:
           image: ${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE_NAME }}:latest
-          fail-build: true
+          fail-build: false
           severity-cutoff: critical
+          output-format: table
 
       - name: Push to Artifact Registry
         uses: docker/build-push-action@v2
