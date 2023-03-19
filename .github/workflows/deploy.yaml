@@ -30,6 +30,7 @@ jobs:
           cache: 'maven'
 
       - name: Authenticate gcloud
+        id: 'auth'
         uses: google-github-actions/auth@v0
         with:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
