@@ -34,9 +34,9 @@ jobs:
 
       # This step can be removed if Automatic Analysis (recommended) is enabled - https://docs.sonarcloud.io/advanced-setup/automatic-analysis/
       - name: Analyze with SonarCloud
-        run: mvn -B verify sonar:sonar -Dsonar.organization=$SONAR_ORD_ID -Dsonar.projectKey=$SONAR_PROJECT_ID -Dsonar.host.url=$SONAR_HOST -Dsonar.login=$SONAR_TOKEN
+        run: mvn -B verify sonar:sonar -Dsonar.organization=$SONAR_ORG_ID -Dsonar.projectKey=$SONAR_PROJECT_ID -Dsonar.host.url=$SONAR_HOST -Dsonar.login=$SONAR_TOKEN
         env:
-          SONAR_ORD_ID: ${{ env.SONAR_ORD_ID }}
+          SONAR_ORG_ID: ${{ env.SONAR_ORG_ID }}
           SONAR_PROJECT_ID: ${{ env.SONAR_PROJECT_ID }}
           SONAR_HOST: ${{ env.SONAR_HOST }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
