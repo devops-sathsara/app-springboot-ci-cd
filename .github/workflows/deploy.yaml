@@ -97,12 +97,18 @@ jobs:
             "JAR_FILE=./target/spring-boot-web.jar"
 
       - name: Scan Docker Image
+        id: scan
         uses: anchore/scan-action@v3
         with:
           image: ${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE_NAME }}:latest
           fail-build: false
           severity-cutoff: critical
-          output-format: table
+          output-format: sarif
+
+      - name: Upload Docker Image Scan Report
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: ${{ steps.scan.outputs.sarif }}
 
       - name: Push to Artifact Registry
         uses: docker/build-push-action@v2
