@@ -18,6 +18,10 @@ jobs:
   build:
     name: App CI/CD
     runs-on: ubuntu-latest
+    # Need below permission for https://github.com/google-github-actions/auth#usage
+    permissions:
+      contents: 'read'
+      id-token: 'write'
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
