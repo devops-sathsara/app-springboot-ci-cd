@@ -8,6 +8,8 @@ on:
     branches:
       - main
 
+concurrency: ${{ github.workflow }}
+
 env:
   PROJECT_ID: citric-shine-378115 # GCP project ID
   GAR_LOCATION: us-central1       # GCP Artifact Registry region
@@ -34,12 +36,7 @@ jobs:
 
       # This step can be removed if Automatic Analysis (recommended) is enabled - https://docs.sonarcloud.io/advanced-setup/automatic-analysis/
       - name: Analyze with SonarCloud
-        run: mvn -B verify sonar:sonar -Dsonar.organization=$SONAR_ORG_ID -Dsonar.projectKey=$SONAR_PROJECT_ID -Dsonar.host.url=$SONAR_HOST -Dsonar.login=$SONAR_TOKEN
-        env:
-          SONAR_ORG_ID: ${{ env.SONAR_ORG_ID }}
-          SONAR_PROJECT_ID: ${{ env.SONAR_PROJECT_ID }}
-          SONAR_HOST: ${{ env.SONAR_HOST }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: mvn -B verify sonar:sonar -Dsonar.organization=${{ env.SONAR_ORG_ID }} -Dsonar.projectKey=${{ env.SONAR_PROJECT_ID }} -Dsonar.host.url=${{ env.SONAR_HOST }} -Dsonar.login=${{ secrets.SONAR_TOKEN }}
 
       - name: Build with Maven
         run: mvn --batch-mode package --file pom.xml
