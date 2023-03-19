@@ -59,6 +59,7 @@ jobs:
     permissions:
       contents: 'read'
       id-token: 'write'
+      security-events: write   # To upload sarif files
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
