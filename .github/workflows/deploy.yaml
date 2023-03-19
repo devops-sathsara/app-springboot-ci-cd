@@ -12,7 +12,7 @@ env:
   PROJECT_ID: citric-shine-378115 # GCP project ID
   GAR_LOCATION: us-central1       # GCP Artifact Registry region
   REPOSITORY: demo-app            # GCP Artifact Registry docker repository naame
-  IMAGE: demo-app                 # Docker image name
+  IMAGE_NAME: demo-app                 # Docker image name
 
 jobs:
   build:
