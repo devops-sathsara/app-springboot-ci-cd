@@ -1,6 +1,6 @@
 # CI/CD Best Practices for SpringBoot Application
 
-* This repository contains a GitHub Actions pipeline that incorporates some best practices for managing application code. *
+*This repository contains a GitHub Actions pipeline that incorporates some best practices for managing application code.*
 
 ## Pre-requisites
 Set up [Workload Identity Federation](https://github.com/google-github-actions/auth#setting-up-workload-identity-federation) to authenticate GCP to push the Docker image to Google Artifact Registry
