@@ -11,7 +11,7 @@ Set up [Workload Identity Federation](https://github.com/google-github-actions/a
 * Unit Testing with Maven 
 * Static code analysis with [SonarCloud](https://sonarcloud.io/)
 * Build and push Docker image to[GCP Artifact Registry](https://cloud.google.com/artifact-registry)
-* Security scan of the Docker image with [Grype](https://github.com/anchore/grype)
+* Security scan of the Docker image with [Grype](https://github.com/anchore/grype) and uploads the results to the [Security Tab](https://github.com/devops-sathsara/ci-cd-app-springboot/security/code-scanning) of the repository
 
 
 
