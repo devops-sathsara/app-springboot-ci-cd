@@ -9,9 +9,9 @@ Set up [Workload Identity Federation](https://github.com/google-github-actions/a
 ## Features
 
 * Unit Testing with Maven 
-* Static code analysis with ([SonarCloud](https://sonarcloud.io/))
-* Build and push Docker image to ([GCP Artifact Registry](https://cloud.google.com/artifact-registry))
-* Security scan of the Docker image with ([Grype](https://github.com/anchore/grype))
+* Static code analysis with [SonarCloud](https://sonarcloud.io/)
+* Build and push Docker image to[GCP Artifact Registry](https://cloud.google.com/artifact-registry)
+* Security scan of the Docker image with [Grype](https://github.com/anchore/grype)
 
 
 
