@@ -55,11 +55,10 @@ jobs:
     name: Publish
     needs: Build
     runs-on: ubuntu-latest
-    # Need below permission for https://github.com/google-github-actions/auth#usage
     permissions:
-      contents: 'read'
-      id-token: 'write'
-      security-events: write   # To upload sarif files
+      contents: 'read'        # Need for https://github.com/google-github-actions/auth#usage
+      id-token: 'write'       # Need for https://github.com/google-github-actions/auth#usage
+      security-events: write  # Need to upload sarif files
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
